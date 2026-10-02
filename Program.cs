@@ -1,4 +1,4 @@
-﻿int[] scores = [5, 4, 3, 5, 4];
+﻿/*int[] scores = [5, 4, 3, 5, 4];
 
 /*Console.WriteLine($"{scores[0]}\n{scores[scores.Length - 1]}");
 scores[2] = 67; // простите
@@ -13,7 +13,7 @@ for (int i = 0; i < scores.Length; i++)
 foreach (int num in scores)
 {
     Console.WriteLine(num);
-}*/
+}
 
 int[] numbers = [10, 20, 30];
 
@@ -73,7 +73,7 @@ foreach (int num in data)
 Объясните письменно в комментарии: что получилось бы, если бы мы начинали поиск максимума со значения `0`?
 
 max остался бы 0 так как он больше всех остальныъ элементов
-*/
+
 
 srednee = (double)sum / data.Length;
 
@@ -187,3 +187,45 @@ int mporog;
 int minn = GetMaxAndMinAndSrednee(arraydaa, out maxx, out sredneee, porog, out mporog);
 
 PrintResults(arraydaa, sredneee, maxx, minn, mporog);
+
+// Разворот массива
+
+int[] test = [1, 2, 3, 4];
+
+for (int i = 0; i < test.Length / 2; i++)
+{
+    int tmp = test[i];
+    test[i] = test[test.Length - 1 - i];
+    test[test.Length - 1 - i] = tmp;
+}
+
+Console.WriteLine(string.Join(", ", test));
+*/
+// Поиск элемента
+
+int FindIndex(int[] array, int target)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] == target) return i;
+    }
+    return -1;
+}
+
+int[] a = [5, 5, 5, 5];
+
+int max = a[0];
+int sec = a[0];
+
+foreach (int num in a)
+{
+    if (num > max)
+    {
+        sec = max;
+        max = num;
+    }
+    else if (num > sec && num != max) sec = num;
+}
+
+if (sec == a[0] && max == a[0]) Console.WriteLine("nop");
+else Console.WriteLine(sec);
