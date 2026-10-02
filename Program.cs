@@ -212,6 +212,8 @@ int FindIndex(int[] array, int target)
     return -1;
 }
 
+// Второй по величине
+
 int[] a = [5, 5, 5, 5];
 
 int max = a[0];
