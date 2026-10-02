@@ -107,7 +107,83 @@ do
     }
 } while (da1 != numer+1);
 
-
-// зачем сейчас выдумывать велосипед с методом?
-
 Console.WriteLine(string.Join(", ", arrayda));
+
+Console.WriteLine();
+
+// Итоговая задача
+
+int GetMaxAndMinAndSrednee(int[] array, out int max, out double srednee, int porog, out int mporog)
+{
+    int min = array[0];
+    max = array[0];
+    int sum = 0;
+    mporog = 0;
+
+    foreach (int num in array)
+    {
+        if (num > max) max = num;
+        if (num < min) min = num;
+        sum += num;
+        if (num >= porog) mporog += 1;
+    }
+
+    srednee = (double)sum / array.Length;
+
+    return min;
+}
+
+void PrintResults(int[] array, double sr, int max, int min, int mpor)
+{
+    Console.WriteLine("Results:");
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.WriteLine($"{i+1}: {array[i]}");
+    }
+
+    Console.WriteLine($"srednee: {sr:F2}\nmax result: {max}\nmin result: {min}\nmporog: {mpor}");
+}
+
+bool isRes;
+int numerr = 0;
+
+do
+{
+    Console.Write("Enter results: ");
+    isRes = int.TryParse(Console.ReadLine(), out numerr);
+    if (!isRes || numerr <= 0) Console.WriteLine("try again.");
+} while (!isRes || numerr <= 0);
+
+int[] arraydaa = new int[numerr]; // results
+
+int da11 = 1;
+int da21;
+
+do
+{
+    Console.Write($"result {da11}: ");
+    bool bal = int.TryParse(Console.ReadLine(), out da21);
+    if (!bal) Console.WriteLine("NOT INT! TRY AGAIN.");
+    else
+    {
+        arraydaa[da11-1] = da21;
+        da11++;
+    }
+} while (da11 != numerr+1);
+
+bool isPorog;
+int porog;
+
+do
+{
+    Console.Write("porog: ");
+    isPorog = int.TryParse(Console.ReadLine(), out porog);
+    if (!isPorog) Console.WriteLine("try again");
+} while (!isPorog);
+
+double sredneee;
+int maxx;
+int mporog;
+int minn = GetMaxAndMinAndSrednee(arraydaa, out maxx, out sredneee, porog, out mporog);
+
+PrintResults(arraydaa, sredneee, maxx, minn, mporog);
